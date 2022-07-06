@@ -1,10 +1,9 @@
 package com.syoon.gitflow.db
 
 import androidx.lifecycle.LiveData
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
+@Dao
 interface WordDao {
 
     //저장된 단어 오름차순으로 가져오기
@@ -17,6 +16,6 @@ interface WordDao {
     suspend fun insert(word: Word)
 
     //전체 단어 지우기
-    @Query("DELETE FROM word_table")
-    suspend fun deleteAll()
+    @Delete
+    suspend fun deleteAll(word: Word)
 }
